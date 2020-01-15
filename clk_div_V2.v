@@ -5,8 +5,8 @@ module clk_div_V2 (clk, reset, clk_out);
     input reset;
     output clk_out;
 
-    reg [23:0] counter;
-    wire [23:0] counterplus;
+    reg [3:0] counter;
+    wire [3:0] counterplus;
     reg clk_track;
 
     always @(posedge clk or negedge reset)
@@ -16,7 +16,7 @@ module clk_div_V2 (clk, reset, clk_out);
             counter = 0;
             clk_track <= 0;
         end
-        else if(counterplus == 5000000) begin
+        else if(counterplus == 10) begin
             counter = 0;
             clk_track <= ~clk_track;
         end
